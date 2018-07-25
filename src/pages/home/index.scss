@@ -1,0 +1,35 @@
+.index {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.informationBox {
+  flex: 1;
+  overflow: scroll;
+}
+
+.codeInput {
+  border: 1px solid rgb(177, 174, 174);
+  margin: 20rpx;
+  padding: 20rpx;
+  font-size: 50rpx;
+  height: 80rpx;
+}
+
+.searchBtn {
+  margin-bottom: 20rpx;
+  width: 60%;
+}
+
+.informationBox {
+  margin-left: 20%;
+  margin-bottom: 20rpx;
+}
+
+.informationItem {
+  display: block;
+  border-left: 10rpx solid black;
+  padding-bottom: 100rpx;
+  font-size: 40rpx;
+}

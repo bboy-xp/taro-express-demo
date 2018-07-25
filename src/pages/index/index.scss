@@ -1,3 +1,13 @@
+.index {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+}
+.scrollBox {
+  flex: 1;
+  display: flex;
+}
 .deleteBtn {
   margin-bottom: -12rpx;
   margin-right: 40rpx;
@@ -5,4 +15,19 @@
 .listContainer {
   display: block;
   margin-top: 20rpx;
+  border-bottom: 1px solid rgb(192, 190, 190);
+  padding: 16rpx;
+}
+.scanCode {
+  flex-basis: 40%;
+  padding: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9e3e3;
+}
+.scrollBox {
+  display: block;
+  height: 45vh;
+  overflow: scroll;
 }
