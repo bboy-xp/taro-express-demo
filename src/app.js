@@ -9,6 +9,7 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/home/index',
+      'pages/question/index',
     ],
     window: {
       backgroundTextStyle: 'light',

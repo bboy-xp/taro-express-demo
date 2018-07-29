@@ -5,15 +5,14 @@ import './index.scss'
 
 export default class Index extends Component {
   config = {
-    navigationBarTitleText: '员工界面'
+    navigationBarTitleText: '问题件界面'
   }
 
   constructor(props) {
     super(props)
     this.state = {
       codeList: [],
-      openid: '',
-      inputCode:''
+      openid: ''
     }
   }
 
@@ -23,7 +22,7 @@ export default class Index extends Component {
       success: function (res) {
         if (res.code) {
           //发起网络请求
-          // console.log(res.code);
+          console.log(res.code);
           wx.request({
             url: 'https://api.weixin.qq.com/sns/jscode2session',
             data: {
@@ -34,7 +33,7 @@ export default class Index extends Component {
             },
             method: 'GET',
             success: function (openidRes) {
-              // console.log(openidRes.data.openid);
+              console.log(openidRes.data.openid);
               that.setState({
                 openid: openidRes.data.openid
               })
@@ -130,42 +129,8 @@ export default class Index extends Component {
   gotoQuestion() {
     //此处遇到路由指向问题查到官方issue解决
     Taro.redirectTo({
-      url: '/pages/question/index'
+      url: '/pages/index/index'
     })
-  }
-
-  inputCodeChange(e) {
-    this.setState({
-      inputCode: e.target.value
-    })
-  }
-  inputCodeSubmit() {
-    const code = this.state.inputCode;
-    const list = this.state.codeList;
-        let haveCode = false;
-        list.map((e, index) => {
-          if (e === code) {
-            haveCode = true;
-          }
-        })
-        //判断是否重复扫码
-
-        if (!haveCode) {
-          list.push(code);
-          this.setState({
-            data: list,
-            inputCode: ''
-          })
-        } else {
-          this.setState({
-            inputCode: ''
-          })
-          wx.showModal({
-            title: '提示',
-            content: '该取件码已在列表，请勿重复添加',
-            showCancel: false
-          })
-        }
   }
 
   render() {
@@ -190,14 +155,14 @@ export default class Index extends Component {
             {item}
           </View>
           <View className='inputCodeContainer'>
-            <Input className='inputCodeBox' onInput={this.inputCodeChange.bind(this)} value={this.state.inputCode} type='text' placeholder='手动输入订单号' />
-            <Button onClick={this.inputCodeSubmit.bind(this)} inputCodeBtn>提交</Button>
+            <Input className='inputCodeBox' type='text' placeholder='手动输入订单号' />
+            <Button inputCodeBtn>提交</Button>
           </View>
           <Button className='submitBtn' onClick={this.submit.bind(this)}>上传？</Button>
         </View>
         <View className='scanCode' onClick={this.scanCode.bind(this)}>点击扫描二维码
         </View>
-        <View onClick={this.gotoQuestion.bind(this)} className="gotoQuestion">问题件界面</View>
+        <View onClick={this.gotoQuestion.bind(this)} className="gotoQuestion">员工界面</View>
 
       </View>
     )
