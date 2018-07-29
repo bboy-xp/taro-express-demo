@@ -109,7 +109,8 @@ export default class Index extends Component {
     const openid = this.state.openid;
 
     Taro.request({
-      url: 'http://127.0.0.1:7001/postCode',
+      // url: 'http://127.0.0.1:7001/postCode',
+      url: 'http://sxp.topsxp.top:7001/postCode',
       method: "POST",
       data: {
         codeList: codeList,
@@ -142,11 +143,11 @@ export default class Index extends Component {
       <View className='index'>
         <View className="list">
           <Text>{this.state.data}</Text>
-          <Text>------------单号列表----------------</Text>
+          <Text>-------------------单号列表-----------------</Text>
           <View className='scrollBox'>
             {item}
           </View>
-          <Button onClick={this.submit.bind(this)}>提交</Button>
+          <Button className='submitBtn' onClick={this.submit.bind(this)}>提交</Button>
         </View>
         <View className='scanCode' onClick={this.scanCode.bind(this)}>点击扫描二维码</View>
 

@@ -16,6 +16,7 @@ export default class Index extends Component {
   }
 
   componentWillMount() {
+    
   }
 
   componentDidMount() { }
@@ -38,7 +39,8 @@ export default class Index extends Component {
     const code = this.state.code;
     console.log(code);
     Taro.request({
-      url: 'http://127.0.0.1:7001/postSearchCode',
+      // url: 'http://127.0.0.1:7001/postSearchCode',
+      url: 'http://sxp.topsxp.top:7001/postSearchCode',
       method: "POST",
       data: {
         code: code
