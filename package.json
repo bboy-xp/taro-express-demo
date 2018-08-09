@@ -57,6 +57,14 @@
     "/postSearchCode": {
       "target": "http://127.0.0.1:7001",
       "changeOrigin": true
+    },
+    "/postQuestionCode": {
+      "target": "http://127.0.0.1:7001",
+      "changeOrigin": true
+    },
+    "/getOpenid": {
+      "target": "http://127.0.0.1:7001",
+      "changeOrigin": true
     }
   }
 }

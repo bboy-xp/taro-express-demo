@@ -23,8 +23,8 @@
 }
 
 .informationBox {
-  margin-left: 20%;
-  margin-bottom: 20rpx;
+  margin: 0 15% 20rpx 20%;
+  overflow: scroll;
 }
 
 .informationItem {
@@ -32,4 +32,7 @@
   border-left: 10rpx solid black;
   padding-bottom: 100rpx;
   font-size: 40rpx;
+}
+.specialText {
+  color: #f88d45;
 }
