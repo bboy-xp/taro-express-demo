@@ -7,8 +7,8 @@ import './app.scss'
 class App extends Component {
   config = {
     pages: [
-      'pages/index/index',
       'pages/home/index',
+      'pages/index/index',
       'pages/question/index',
     ],
     window: {

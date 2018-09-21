@@ -30,7 +30,7 @@ export default class Index extends Component {
           const code = res.code;
           Taro.request({
             // url: 'http://127.0.0.1:7001/getOpenid',
-            url: 'https://sxp.topsxp.top/getOpenid',
+            url: 'https://www.jnmum.cn/getOpenid',
             method: 'POST',
             data: {
               code: code
@@ -145,7 +145,7 @@ export default class Index extends Component {
 
     Taro.request({
       // url: 'http://127.0.0.1:7001/postCode',
-      url: 'https://sxp.topsxp.top/postCode',
+      url: 'https://www.jnmum.cn/postCode',
       method: "POST",
       data: {
         codeList: codeList,

@@ -39,7 +39,7 @@ export default class Index extends Component {
     const code = this.state.code;
     Taro.request({
       // url: 'http://127.0.0.1:7001/postSearchCode',
-      url: 'https://sxp.topsxp.top/postSearchCode',
+      url: 'https://www.jnmum.cn/postSearchCode',
       method: "POST",
       data: {
         code: code
