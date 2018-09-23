@@ -23,16 +23,45 @@
 }
 
 .informationBox {
-  margin: 0 15% 20rpx 20%;
+  margin: 20rpx 15% 20rpx 20%;
   overflow: scroll;
 }
 
 .informationItem {
+  position: relative;
   display: block;
-  border-left: 10rpx solid black;
-  padding-bottom: 100rpx;
-  font-size: 40rpx;
+  // border-left: 10rpx solid black;
+  padding-bottom: 10rpx;
+  font-size: 32rpx;
+  padding-left: 60rpx;
 }
 .specialText {
   color: #f88d45;
 }
+.timelineIcon {
+  position: absolute;
+  left: 2px;
+  top: 3px
+}
+.timelineTail {
+  position: absolute;
+  top: 40px;
+  bottom: -5px;
+  left: 22px;
+  border-left: 2px solid #e2ecf4;
+}
+.timeText {
+  padding-top: 10rpx;
+  font-size: 26rpx;
+  color: #7e7e7e;
+}
+// .loadingIcon {
+//   animation: zhuandong 2s linear infinite;
+// }
+// @keyframes zhuandong{
+//   from{
+//     transform: rotate(0deg);
+//   }to{
+//     transform: rotate(360deg);
+//   }
+// }

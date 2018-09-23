@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import { AtIcon } from 'taro-ui'
 import './index.scss'
 
 export default class Index extends Component {
@@ -12,7 +13,7 @@ export default class Index extends Component {
     this.state = {
       code: '',
       information: [],
-      
+
     }
   }
 
@@ -81,13 +82,17 @@ export default class Index extends Component {
         const localDate = date.toLocaleDateString();
         const localTime = date.toLocaleTimeString();
         return (
-          <div className='informationItem'>
-            <View>{e.name}负责配送</View>
-            <View onClick={this.callPhone.bind(this,e.phone)}>联系电话：<span className='specialText'>{e.phone}</span></View>
-            {e.isQuestion ? <View>在给您派件时打电话没打通</View> : null}
-            <View>{localDate}</View>
-            <View>{localTime}</View>
-          </div>
+          <View className='informationItem'>
+            <View className="timelineTail"></View>
+            <AtIcon className="timelineIcon" value='clock' size='20' color='#7ca7fa'></AtIcon>
+            <View>
+              <View>{e.name}负责配送</View>
+              <View onClick={this.callPhone.bind(this, e.phone)}>联系电话:<Text className='specialText'>{e.phone}</Text></View>
+              {e.isQuestion ? <View>在给您派件时打电话没打通</View> : null}
+              <View className="timeText">{localDate}</View>
+              <View className="timeText">{localTime}</View>
+            </View>
+          </View>
         )
       }
       )
@@ -98,10 +103,10 @@ export default class Index extends Component {
       <View className='index'>
         <Input className='codeInput' type='text' placeholder='请输入查询的快递单号' value={this.state.code} onInput={this.onInput.bind(this)} />
         <Button className='searchBtn' onClick={this.search.bind(this)}>点击查询</Button>
-        <div className="informationBox">
+        {/* <AtIcon className="loadingIcon" value='loading-2' size='120' color='#7ca7fa'></AtIcon> */}
+        <View className="informationBox">
           {item}
-
-        </div>
+        </View>
       </View>
     )
   }
