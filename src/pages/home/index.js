@@ -103,7 +103,7 @@ export default class Index extends Component {
       <View className='index'>
         <Input className='codeInput' type='text' placeholder='请输入查询的快递单号' value={this.state.code} onInput={this.onInput.bind(this)} />
         <Button className='searchBtn' onClick={this.search.bind(this)}>点击查询</Button>
-        {/* <AtIcon className="loadingIcon" value='loading-2' size='120' color='#7ca7fa'></AtIcon> */}
+        {/* <AtIcon className="loadingIcon" value='loading-3' size='120' color='#7ca7fa'></AtIcon> */}
         <View className="informationBox">
           {item}
         </View>

@@ -1,0 +1,45 @@
+.loadingContent {
+  padding-top: 38%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loadingIcon {
+  animation: zhuandong 1.5s linear infinite;
+  position: relative;
+  top: 10%;
+}
+.loadingText {
+  font-size: 30rpx;
+  margin-top: 7vw;
+}
+.text1 {
+  position: relative;
+  animation: jump 1s 0s linear infinite;
+}
+.text2 {
+  position: relative;
+  animation: jump 1s 0.5s linear infinite;
+}
+@keyframes zhuandong{
+  from{
+    transform: rotate(0deg);
+  }to{
+    transform: rotate(360deg);
+  }
+}
+@keyframes jump{
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 20rpx;
+  }
+  100% {
+    top: 0;
+  }
+    
+}
+

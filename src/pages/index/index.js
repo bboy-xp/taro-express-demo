@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import codeIcon from "../../assets/img/code.png";
 import questionIcon from "../../assets/img/question.png";
+import { AtToast } from 'taro-ui'
 import './index.scss'
 
 export default class Index extends Component {
@@ -18,81 +19,12 @@ export default class Index extends Component {
     }
   }
 
+
   componentWillMount() {
-    const that = this;
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-
-          //注意微信登录获取openid是隐秘行为，不能再前端进行
-          //在前端获取到code之后将code发送到后端再请求获取openid
-
-          const code = res.code;
-          Taro.request({
-            // url: 'http://127.0.0.1:7001/getOpenid',
-            url: 'https://www.jnmum.cn/getOpenid',
-            method: 'POST',
-            data: {
-              code: code
-            }
-          }).then(res => {
-            // console.log(res.data);
-            const openid = res.data;
-            that.setState({
-              openid: openid
-            })
-            if (openid === 'oA8kD5sMapEEsXaeESUfVsX5Sgcw' || openid === 'oA8kD5gSIbE4dTZ896XOUGAjEutY' || openid === 'oA8kD5uS_GbKJqR5sTuc8CSQcEoA' || openid === 'oA8kD5knAxOz7RVq9yAqBkZO4poo' || openid === 'oA8kD5qtkBK48qaPmZnsimQaBpzE' || openid === 'oA8kD5p1wiA5pxFnpi3ifx3i_6Kk' || openid === 'oA8kD5v03_kdX88XR6h3hli_q4ws') {
-              console.log('你是员工');
-            } else {
-              console.log('你是用户');
-              wx.redirectTo({
-                url: "../home/index"
-              });
-            }
-          })
-
-          //发起网络请求
-          // console.log(res.code);
-          // wx.request({
-          //   url: 'https://api.weixin.qq.com/sns/jscode2session',
-          //   data: {
-          //     appid: "wxa65b857e40095d0e",
-          //     secret: "40030bc4b3d3af6bafb81ff33c459a50",
-          //     grant_type: "authorization_code",
-          //     js_code: res.code
-          //   },
-          //   method: 'GET',
-          //   success: function (openidRes) {
-          //     // console.log(openidRes.data.openid);
-          //     that.setState({
-          //       openid: openidRes.data.openid
-          //     })
-
-          //     //临时注释
-
-          // if (openidRes.data.openid === 'oA8kD5sMapEEsXaeESUfVsX5Sgcw' || openidRes.data.openid === 'oA8kD5gSIbE4dTZ896XOUGAjEutY' || openidRes.data.openid === 'oA8kD5uS_GbKJqR5sTuc8CSQcEoA' || openidRes.data.openid === 'oA8kD5knAxOz7RVq9yAqBkZO4poo' || openidRes.data.openid === 'oA8kD5qtkBK48qaPmZnsimQaBpzE' || openidRes.data.openid === 'oA8kD5p1wiA5pxFnpi3ifx3i_6Kk' || openidRes.data.openid === 'oA8kD5v03_kdX88XR6h3hli_q4ws') {
-          //   console.log('你是员工');
-          // } else {
-          //   console.log('你是用户');
-          //   wx.redirectTo({
-          //     url: "../home/index"
-          //   });
-          // }
-          //   }
-          // })
-        } else {
-          // console.log('登录失败！' + res.errMsg);
-          wx.showModal({
-            title: '提示',
-            content: '登录失败！' + res.errMsg,
-            showCancel: false
-          })
-        }
-      }
-    });
+    this.setState({
+      openid: this.$router.params.openid
+    })
   }
-
-  componentDidMount() { }
 
   componentWillUnmount() { }
 
@@ -143,22 +75,35 @@ export default class Index extends Component {
     const codeList = this.state.codeList;
     const openid = this.state.openid;
 
-    Taro.request({
-      // url: 'http://127.0.0.1:7001/postCode',
-      url: 'https://www.jnmum.cn/postCode',
-      method: "POST",
-      data: {
-        codeList: codeList,
-        openid: openid
-      }
-    }).then(res => {
-      // console.log(res);
-      if (res.data === 'ok') {
-        this.setState({
-          codeList: []
-        })
-      }
-    })
+    if (codeList.length === 0) {
+      Taro.showToast({
+        title: '无内容',
+        icon: 'none',
+        duration: 900
+      });
+    } else {
+      Taro.request({
+        // url: 'http://127.0.0.1:7001/postCode',
+        url: 'https://www.jnmum.cn/postCode',
+        method: "POST",
+        data: {
+          codeList: codeList,
+          openid: openid
+        }
+      }).then(res => {
+        // console.log(res);
+        if (res.data === 'ok') {
+          this.setState({
+            codeList: []
+          });
+          Taro.showToast({
+            title: '上传成功',
+            icon: 'success',
+            duration: 900
+          });
+        }
+      })
+    }
   }
 
   gotoQuestion() {
